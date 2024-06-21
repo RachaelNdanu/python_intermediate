@@ -1,0 +1,31 @@
+import multiprocessing.process
+#import time
+import multiprocessing
+
+
+
+def calculate_squares (arr):
+    for x in arr:
+        print(f" square of {x}: {x**2}")
+
+
+def calculate_cube (arr):
+    for i in arr:
+        print(f"cube of {i}: {i**3}")
+
+
+
+if __name__ == "__main__":
+    arr = [2,4,6,9]
+
+    p1 = multiprocessing.Process(target=calculate_squares , args=(arr,))
+    p2 = multiprocessing.Process(target= calculate_cube , args= (arr,))
+
+    p1.start()
+    p2.start()
+
+    p1.join()
+    p2.join()
+
+    print('\n')
+    print('Done!')
